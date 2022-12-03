@@ -1,0 +1,54 @@
+<!-- JavaScript Functions
+    A JavaScript function is a block of code designed to perform a particular task.
+    A JavaScript function is executed when "something" invokes it (calls it).
+    Example
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <h1 id = 'demo'></h1>
+            <script>
+                function sum(a , b){
+                    return a+b;
+                }
+                document.getElementById("demo").innerHTML = sum(2 , 5);
+            </script>
+        </body>
+        </html> 
+
+Functions Used as Variable Values
+    Functions can be used the same way as you use variables, in all types of formulas, assignments,
+    and calculations.    
+    Example
+        Instead of using a variable to store the return value of a function:        
+        let x = toCelsius(77);
+        let text = "The temperature is " + x + " Celsius";
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>       
+        <body>
+            <h1 id = 'demo'></h1>
+            <script>           
+            function getCelsius(fahrenheit){
+                return (5/9) * (fahrenheit - 32);
+            }
+            document.getElementById('demo').innerHTML = getCelsius(77)
+            </script>           
+        </body>
+        </html>
+
+
+Local Variables
+    Variables declared within a JavaScript function, become LOCAL to the function.        
+    Local variables can only be accessed from within the function. -->

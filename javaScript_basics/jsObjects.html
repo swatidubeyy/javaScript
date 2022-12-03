@@ -1,0 +1,79 @@
+
+
+JavaScript Objects
+    Real Life Objects, Properties, and Methods In real life, a car is an object.
+
+    A car has properties like weight and color, and methods like start and stop:
+    Object ....> car
+    Properties ....> car.name = Fiat , car.model = 500 , car.weight = 850kg , car.color = white	
+    Methods ....> car.start() , car.drive() , car.brake() , car.stop()
+
+    All cars have the same properties, but the property values differ from car to car.
+    All cars have the same methods, but the methods are performed at different times.
+
+    objects can contain many values.
+        const car = {type:"Fiat", model:"500", color:"white"};
+
+    Example ....>>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <h1 id = 'demo'></h1>
+            <script>
+                const car = {type : 'four wheeler' , color : 'blue' , gear : '3' , speed : '30km per hour'};
+                document.getElementById('demo').innerHTML = " car type is " + car.type + " , car color is " 
+                    + car.color + " and no of gears in car is " + car.gear;
+            </script>
+        </body>
+        </html>
+
+Accessing Object Properties
+    You can access object properties in two ways: 
+
+    objectName.propertyName
+    Example ..>> person.lastName;
+
+    objectName["propertyName"]
+    Example2..>>person["lastName"];
+
+    
+Object Methods
+    Objects can also have methods.
+    Example ..>>
+        const person = {
+            firstName: "John",
+            lastName : "Doe",
+            id       : 5566,
+            fullName : function() {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+    What is this? 
+        In JavaScript, the this keyword refers to an object.
+        Which object depends on how this is being invoked (used or called).
+
+        The this keyword refers to different objects depending on how it is used:
+            In an object method, this refers to the object.
+            Alone, this refers to the global object.
+            In a function, this refers to the global object.
+            In a function, in strict mode, this is undefined.
+            In an event, this refers to the element that received the event.
+            Methods like call(), apply(), and bind() can refer this to any object.
+
+        Note ..>>
+            this is not a variable. It is a keyword. You cannot change the value of this.
+
+
+
+Do Not Declare Strings, Numbers, and Booleans as Objects!
+    When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+    x = new String();        // Declares x as a String object
+    y = new Number();        // Declares y as a Number object
+    z = new Boolean();       // Declares z as a Boolean object
+    Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
