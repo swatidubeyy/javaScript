@@ -1,0 +1,145 @@
+<!--JavaScript Display Possibilities....>
+    JavaScript can "display" data in different ways:....>
+
+        1)Writing into an HTML element, using innerHTML.....>
+            Changing the innerHTML property of an HTML element is a common way to display data in HTML.
+            To access an HTML element, JavaScript can use the document.getElementById(id) method.
+            The id attribute defines the HTML element. The innerHTML property defines the HTML content:
+            eg....>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <h1 id = 'demo'>hello everyone</h1>
+                        <script>
+                            document.getElementById('demo').innerHTML = (2+5)
+                        </script>
+                    </body>
+                    </html>
+
+        2)Writing into the HTML output using document.write().....>
+            For testing purposes, it is convenient to use document.write():
+            eg....>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <h1>hello everyone</h1>
+                        <script>
+                            document.write(4+9)
+                        </script>
+                    </body>
+                    </html>
+
+            Using document.write() after an HTML document is loaded, will delete all existing HTML.
+            The document.write() method should only be used for testing.
+            eg....>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <h1>helo everyone</h1>
+                        <button onclick="document.write(9+2)">remove text</button>
+                    </body>
+                    </html>
+
+
+
+        3)Writing into an alert box, using window.alert().....>
+            You can use an alert box to display data
+            You can skip the window keyword.
+
+            eg....>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <script>
+                            window.alert(9+10)
+                        </script>
+                    </body>
+                    </html>
+
+
+            In JavaScript, the window object is the global scope object. This means that variables,
+              properties, and methods by default belong to the window object. 
+              This also means that specifying the window keyword is optional
+            
+              eg....>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <script>
+                            alert(9+10)
+                        </script>
+                    </body>
+                    </html>
+
+
+        4)Writing into the browser console, using console.log().....>
+            For debugging purposes, you can call the console.log() method in the browser to display data.
+        
+            eg....>
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <h1>Press the f12 button to see result</h1>
+                        <script>
+                            console.log( 'The sum is = ' + parseInt( 9 + 21))
+                        </script>
+                    </body>
+                    </html>
+
+
+
+JavaScript Print.....>
+            JavaScript does not have any print object or print methods.
+            You cannot access output devices from JavaScript.
+            The only exception is that you can call the window.print() method in the browser 
+            to print the content of the current window.
+            
+            eg....> 
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <button onclick="window.print()">print this page</button>
+                    </body>
+                    </html> --->
