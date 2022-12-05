@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = 'demo3'></h1>
+    <script>
+        //Back-Tics Syntax
+        document.getElementById('demo3').innerHTML = `Hello World!`
+
+        //Quotes Inside Strings
+        document.getElementById('demo3').innerHTML = `he's my 'mother'`
+        
+        //Multiline 
+        document.getElementById('demo3').innerHTML = `I have
+                                                      a dog named
+                                                      zozo . and
+                                                      he is very cute`
+
+        //Variable Substitutions
+        let fn = 'swati'; ln = 'dubey';
+        document.getElementById('demo3').innerHTML = `welcome  ${fn}  ${ln}!`
+
+        //Expression Substitution
+        let l = 2 , h = 4 , b = 5
+        document.getElementById('demo3').innerHTML = `Area is = ${(l*b*h)}`
+
+    </script>
+</body>
+</html>
+
+<!--....................................................string....................................................
+
+JavaScript Strings
+    JavaScript strings are for storing and manipulating text.
+    A JavaScript string is zero or more characters written inside quotes.
+    Note
+            All string methods return a new string. They don't modify the original string.
+            Formally said: Strings are immutable: Strings cannot be changed, only replaced.
+    Example
+        let text = "John Doe";
+
+    You can use single or double quotes:
+        Example
+            let carName1 = "Volvo XC60";  // Double quotes
+            let carName2 = 'Volvo XC60';  // Single quotes
+
+    You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
+        Example
+            let answer1 = "It's alright";
+            let answer2 = "He is called 'Johnny'";
+            let answer3 = 'He is called "Johnny"';
+
+    String Length
+        To find the length of a string, use the built-in length property:
+        Example
+            let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let length = text.length;
+
+Escape Character
+    Because strings must be written within quotes, JavaScript will misunderstand this string:
+    example
+        let text = "We are the so-called "Vikings" from the north.";
+        The string will be chopped to "We are the so-called ".
+
+    The solution to avoid this problem, is to use the backslash escape character.            
+    The backslash (\) escape character turns special characters into string characters:
+            
+        Code	Result	Description
+        \'	'	Single quote
+        \"	"	Double quote
+        \\	\	Backslash
+        The sequence \"  inserts a double quote in a string:
+            
+        Example
+            let text = "We are the so-called \"Vikings\" from the north.";
+            The sequence \'  inserts a single quote in a string:
+            
+        Example
+            let text= 'It\'s alright.';
+            The sequence \\  inserts a backslash in a string:
+            
+        Example
+            let text = "The character \\ is called backslash.";
+
+
+Six other escape sequences are valid in JavaScript:
+            
+    Code	Result
+    \b	Backspace
+    \f	Form Feed
+    \n	New Line
+    \r	Carriage Return
+    \t	Horizontal Tabulator
+    \v	Vertical Tabulator
+The 6 escape characters above were originally designed to control typewriters, teletypes, and fax machines.
+They do not make any sense in HTML.
+
+
+Breaking Long Code Lines
+    For best readability, programmers often like to avoid code lines longer than 80 characters.
+    If a JavaScript statement does not fit on one line, the best place to break it is after an operator:
+    Example
+        document.getElementById("demo").innerHTML =
+        "Hello Dolly!";
+
+    You can also break up a code line within a text string with a single backslash:
+    Example
+        document.getElementById("demo").innerHTML = "Hello \
+        Dolly!";
+
+    The \ method is not the preferred method. It might not have universal support.
+    Some browsers do not allow spaces behind the \ character.
+
+    A safer way to break up a string, is to use string addition:
+    Example
+        document.getElementById("demo").innerHTML = "Hello " +
+        "Dolly!";
+
+    You cannot break up a code line with a backslash:
+    Example
+        document.getElementById("demo").innerHTML = \
+        "Hello Dolly!";
+
+
+
+JavaScript Strings as Objects
+    Normally, JavaScript strings are primitive values, created from literals:
+        let x = "John";
+
+    But strings can also be defined as objects with the keyword new:
+        let y = new String("John");
+    Example
+        let x = "John";
+        let y = new String("John");
+
+    Do not create Strings objects.
+    The new keyword complicates the code and slows down execution speed.
+    String objects can produce unexpected results:
+
+    When using the == operator, x and y are equal:
+    let x = "John";
+    let y = new String("John");
+
+    When using the === operator, x and y are not equal:
+    let x = "John";
+    let y = new String("John");
+
+    Note the difference between (x==y) and (x===y).
+    (x == y) true or false? ---- false
+    let x = new String("John");
+    let y = new String("John");
+
+    (x === y) true or false? ---- false
+    let x = new String("John");
+    let y = new String("John");
+
+    Comparing two JavaScript objects always returns false.
+
+
+
+
+..................................................string Methods...............................................
+
+
+JavaScript String Methods
+String length
+The length property returns the length of a string:
+
+Extracting String Parts
+String slice()
+slice() extracts a part of a string and returns the extracted part in a new string.
+The method takes 2 parameters: start position, and end position (end not included).
+document.getElementById('demo').innerHTML = 'The sliced text from 0 to 10 of txt is = ' +
+txt.slice(0,10)
+
+If you omit the second parameter, the method will slice out the rest of the string:
+document.getElementById('demo').innerHTML = 'The sliced text from 10 of txt is = ' +
+txt.slice(10)
+
+If a parameter is negative, the position is counted from the end of the string:
+document.getElementById('demo').innerHTML = 'The sliced text from -10 of txt is = ' +
+txt.slice(-10)
+
+This example slices out a portion of a string from position -12 to position -6:
+document.getElementById('demo').innerHTML = 'The sliced text from -10 to -5 of txt is = ' +
+txt.slice(-10,-5)
+
+String substring()
+substring() is similar to slice().
+The difference is that start and end values less than 0 are treated as 0 in substring().
+If you omit the second parameter, substring() will slice out the rest of the string.
+document.getElementById('demo').innerHTML = 'The subscring of txt from 0 to 10 is = ' +
+txt.substring(0,10)
+
+String substr()
+substr() is similar to slice().
+The difference is that the second parameter specifies the length of the extracted part.
+document.getElementById('demo').innerHTML = 'The subscring of txt from 0 to 10 is = ' +
+txt.substr(3,10)
+
+If you omit the second parameter, substr() will slice out the rest of the string.
+
+If the first parameter is negative, the position counts from the end of the string.
+document.getElementById('demo').innerHTML = 'The subscring of txt from 0 to 10 is = ' +
+txt.substr(-6)
+
+String replace()
+The replace() method replaces a specified value with another value in a string:
+Note
+The replace() method does not change the string it is called on.
+The replace() method returns a new string.
+The replace() method replaces only the first match
+
+By default, the replace() method replaces only the first match:
+If you want to replace all matches, use a regular expression with the /g flag set.
+document.getElementById('demo').innerHTML = 'replace string dh with wt is = ' +
+txt.replace(/dh/g , 'wt')
+
+By default, the replace() method is case sensitive. Writing HD (with upper-case) will not work:
+To replace case insensitive, use a regular expression with an /i flag (insensitive):
+document.getElementById('demo').innerHTML = 'replace string dh with wt is = ' +
+txt.replace(/Dh/i , 'wt')
+
+String replaceAll()
+In 2021, JavaScript introduced the string method replaceAll():
+The replaceAll() method allows you to specify a regular expression instead of a string to be replaced.
+If the parameter is a regular expression, the global flag (g) must be set set, otherwise
+a TypeError is thrown.
+ocument.getElementById('demo').innerHTML = 'replace string dh with wt is = ' +
+txt.replaceAll("dh" , 'wt')
+
+String toUpperCase()
+A string is converted to upper case with toUpperCase():
+document.getElementById('demo').innerHTML = 'to upperCase = ' +
+txt.toUpperCase()
+
+String toLowerCase()
+A string is converted to lower case with toLowerCase():
+document.getElementById('demo').innerHTML = 'to loweCase = ' +
+txt.toLowerCase()
+
+String concat()
+concat() joins two or more strings:
+The concat() method can be used instead of the plus operator. These two lines do the same:
+document.getElementById('demo').innerHTML = 'to loweCase = ' +
+txt.concat(' ',txt2)
+
+
+String trim()
+The trim() method removes whitespace from both sides of a string:
+document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+txt.trim().length +", "+ txt.length
+
+String trimStart()
+ECMAScript 2019 added the String method trimStart() to JavaScript.
+The trimStart() method works like trim(), but removes whitespace only from the start of a string.
+document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+txt.trimStart().length +", "+ txt.length
+
+String trimEnd()
+ECMAScript 2019 added the String method trimEnd() to JavaScript.
+The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
+document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+txt.trimEnd().length +", "+ txt.length
+
+String padStart()
+The padStart() method pads a string with another string:
+document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+txt3.padStart(10 , '0')
+Note
+The padStart() method is a string method.
+To pad a number, convert the number to a string first.
+document.getElementById('demo').innerHTML = 'pads a string with another string = ' +
+txt5.padEnd(20 , 1)
+
+String padEnd()
+The padEnd() method pads a string with another string:
+document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+txt3.padStart(10 , '0')
+Note
+The padEnd() method is a string method.
+To pad a number, convert the number to a string first.
+document.getElementById('demo').innerHTML = 'pads a string with another string = ' +
+txt5.padEnd(20 , 1)
+
+String charAt()
+The charAt() method returns the character at a specified index (position) in a string:
+document.getElementById('demo').innerHTML = 'charAt 8 = ' +
+txt2.charAt(8)
+
+String charCodeAt()
+The charCodeAt() method returns the unicode of the character at a specified index in a string:
+The method returns a UTF-16 code (an integer between 0 and 65535).
+document.getElementById('demo').innerHTML = 'unicode of charAt 8 = ' +
+txt2.charCodeAt(8)
+
+String split()
+A string can be converted to an array with the split() method:
+document.getElementById('demo').innerHTML = 'unicode of charAt 8 = ' +
+txt2.split(' ')
+If the separator is omitted, the returned array will contain the whole string in index [0].
+
+
+Property Access
+ECMAScript 5 (2009) allows property access [ ] on strings:
+Example
+let text = "HELLO WORLD";
+let char = text[0];
+Note
+Property access might be a little unpredictable:
+It makes strings look like arrays (but they are not)
+If no character is found, [ ] returns undefined, while charAt() returns an empty string.
+It is read only. str[0] = "A" gives no error (but does not work!)
+
+
+Example of all .........
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id='demo'>Hey Everyone</h1>
+    <script>
+        let txt = '       AbcddefgHijslkjgsdlhfjngt nmg.jb vkb dh dh emngkljerfglvgdfdhkmkjndf    '
+        let txt2 = 'is a text'
+        let txt3 = '5'
+        let txt4 = 6
+        let txt5 = txt4.toString();
+
+        //toLength
+        document.getElementById('demo').innerHTML = 'The length of txt is = ' + txt.length
+
+        //slice
+        document.getElementById('demo').innerHTML = 'The sliced text from 0 to 10 of txt is = ' +
+            txt.slice(0, 10)
+        document.getElementById('demo').innerHTML = 'The sliced text from 10 of txt is = ' +
+            txt.slice(10)
+        document.getElementById('demo').innerHTML = 'The sliced text from -10 of txt is = ' +
+            txt.slice(-10)
+        document.getElementById('demo').innerHTML = 'The sliced text from -10 to -5 of txt is = ' +
+            txt.slice(-10, -5)
+
+        //substring()
+        document.getElementById('demo').innerHTML = 'The subscring of txt from 0 to 10 is = ' +
+            txt.substring(0, 10)
+
+        //substr
+        document.getElementById('demo').innerHTML = 'The subscring of txt from 0 to 10 is = ' +
+            txt.substr(3, 10)
+
+        document.getElementById('demo').innerHTML = 'The subscring of txt from 0 to 10 is = ' +
+            txt.substr(-6)
+
+        //replace()
+        document.getElementById('demo').innerHTML = 'replace string dh with wt is = ' +
+            txt.replace('dh', 'wt')
+
+        document.getElementById('demo').innerHTML = 'replace string dh with wt is = ' +
+            txt.replace(/dh/g, 'wt')
+
+        document.getElementById('demo').innerHTML = 'replace dh with wt is = ' +
+            txt.replace(/Dh/i, 'wt')
+
+        //replaceAll
+        document.getElementById('demo').innerHTML = 'replace All dh with wt is = ' +
+            txt.replaceAll("dh", 'wt')
+
+        //to upprcase
+        document.getElementById('demo').innerHTML = 'to upperCase = ' +
+            txt.toUpperCase()
+
+        //to upprcase
+        document.getElementById('demo').innerHTML = 'to loweCase = ' +
+            txt.toLowerCase()
+
+        //concat
+        document.getElementById('demo').innerHTML = 'to loweCase = ' +
+            txt.concat(' ', txt2)
+
+        //trim
+        document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+            txt.trim().length + ", " + txt.length
+
+        //trimStart
+        document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+            txt.trimStart().length + ", " + txt.length
+
+        //trimEnd
+        document.getElementById('demo').innerHTML = '1st is trimed length and second is without trim = ' +
+            txt.trimEnd().length + ", " + txt.length
+
+        //padStart
+        document.getElementById('demo').innerHTML = 'pads a string with another string = ' +
+            txt3.padStart(3, '0')
+
+        document.getElementById('demo').innerHTML = 'pads a string with another string = ' +
+            txt5.padEnd(2, 1)
+
+        //padEnd
+        document.getElementById('demo').innerHTML = 'pads a string with another string = ' +
+            txt3.padEnd(4, '1')
+
+        document.getElementById('demo').innerHTML = 'pads a string with another string = ' +
+            txt5.padEnd(4, 3)
+
+        //charAt
+        document.getElementById('demo').innerHTML = 'charAt 8 = ' +
+            txt2.charAt(8)
+
+        //charCodeAt
+        document.getElementById('demo').innerHTML = 'unicode of charAt 8 = ' +
+            txt2.charCodeAt(8)
+
+        //split    
+        document.getElementById('demo').innerHTML = 'splitted string = ' +
+            txt2.split(' ')
+
+    </script>
+</body>
+
+</html> 
+..................................................string Search..........................................
+
+
+JavaScript Search Methods
+
+    String indexOf()
+        JavaScript String indexOf()
+        The indexOf() method returns the index of (position of) the first occurrence of a string in a string
+    Note
+        JavaScript counts positions from zero.
+        0 is the first position in a string, 1 is the second, 2 is the third, ...
+
+    String lastIndexOf()
+        The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+        Both indexOf(), and lastIndexOf() return -1 if the text is not found:
+
+        The lastIndexOf() methods searches backwards (from the end to the beginning), meaning: if the
+         second parameter is 15, the search starts at position 15, and searches to the beginning of the string.
+
+        Both methods accept a second parameter as the starting position for the search:
+
+    String search()
+        The search() method searches a string for a string (or a regular expression) and returns the 
+         position of the match:
+
+    Did You Notice?
+        The two methods, indexOf() and search(), are equal?            
+        They accept the same arguments (parameters), and return the same value?
+            
+        The two methods are NOT equal. These are the differences:            
+        The search() method cannot take a second start position argument.
+        The indexOf() method cannot take powerful search values (regular expressions).
+
+
+    String match()
+        The match() method returns an array containing the results of matching a string against a string 
+         (or a regular expression).
+        Perform a search for "ain":
+            text.match(/ain/);
+        Perform a global search for "ain":
+            text.match(/ain/g);
+        Perform a global, case-insensitive search for "ain":
+            text.match(/ain/gi);
+
+        Note
+            If a regular expression does not include the g modifier (global search), match() will return 
+             only the first match in the string.
+
+    String matchAll()
+        The matchAll() method returns an iterator containing the results of matching a string against a 
+         string (or a regular expression).
+
+    String includes()
+        The includes() method returns true if a string contains a specified value. Otherwise it returns false.
+        includes() is case sensitive.
+
+    String startsWith()
+        This method returns true if a string begins with a specified value.Otherwise it returns false:
+        startsWith() is case sensitive.
+
+    String endsWith()
+        The endsWith() method returns true if a string ends with a specified value. Otherwise it returns false:
+        endsWith() is case sensitive.
+
+
+Example .........
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 id = 'demo2'></h1>
+        <script>
+            let str = "hii my name is swati and swati is a very good name";
+            let str1 = str.matchAll('swati')
+
+            //String indexOf()
+            document.getElementById('demo2').innerHTML = str.indexOf("swati");
+            document.getElementById('demo2').innerHTML = str.indexOf("swati" , 17);
+
+            //String lastIndexOf()
+            document.getElementById('demo2').innerHTML = str.lastIndexOf("swati");
+            document.getElementById('demo2').innerHTML = str.lastIndexOf("swati" , 20);
+
+            //String search()
+            document.getElementById('demo2').innerHTML = str.search("name");
+
+            //String match()
+            document.getElementById('demo2').innerHTML = str.match('am')
+            document.getElementById('demo2').innerHTML = str.match(/am/)
+            document.getElementById('demo2').innerHTML = str.match(/Am/i)
+            document.getElementById('demo2').innerHTML = str.match(/am/g)
+            
+
+            //String matchAll()
+            document.getElementById('demo2').innerHTML = Array.from(str1);
+
+            let str2 = str.matchAll(/swati/g)
+            document.getElementById('demo2').innerHTML = Array.from(str2);
+
+
+            //String includes()
+            document.getElementById('demo2').innerHTML = str.includes('name')
+            document.getElementById('demo2').innerHTML = str.includes('my' , 10)
+
+
+            //String startsWith()
+            document.getElementById('demo2').innerHTML = str.startsWith('hii')//true
+            document.getElementById('demo2').innerHTML = str.startsWith('my')//false
+            document.getElementById('demo2').innerHTML = str.startsWith('my', 4) //true
+            document.getElementById('demo2').innerHTML = str.startsWith('my', 3) //false
+
+
+            //String endsWith()
+            document.getElementById('demo2').innerHTML = str.endsWith("name") //true
+            document.getElementById('demo2').innerHTML = str.endsWith("good") //false
+            //Check in the 11 first characters of a string ends with 'is'
+            document.getElementById('demo2').innerHTML = str.endsWith("is" , 14) //true
+            document.getElementById('demo2').innerHTML = str.endsWith("is" , 13) //false
+        </script>
+    </body>
+    </html>
+
+
+..................................................string Templates..........................................-->
+
+
+
+JavaScript Template Literals
+    Synonyms:
+        Template Literals
+        Template Strings
+        String Templates
+        Back-Tics Syntax
+
+Back-Tics Syntax
+    Template Literals use back-ticks (``) rather than the quotes ("") to define a string:       
+    Example
+        let text = `Hello World!`;
+
+Quotes Inside Strings
+    With template literals, you can use both single and double quotes inside a string:
+    Example
+        let text = `He's often called "Johnny"`;
+
+Multiline Strings
+    Template literals allows multiline strings:
+    Example
+        let text =
+        `The quick
+        brown fox
+        jumps over
+        the lazy dog`;
+        
+Interpolation
+    Template literals provide an easy way to interpolate variables and expressions into strings.
+    The method is called string interpolation.
+    The syntax is: ${...}  
+
+
+string interpolation
+    Automatic replacing of variables with real values is called string interpolation.
+    Automatic replacing of expressions with real values is called string interpolation.
+
+
+Variable Substitutions
+    Template literals allow variables in strings:
+    
+
+Expression Substitution
+    Template literals allow expressions in strings:    
