@@ -248,4 +248,265 @@ Example............-->
 </html>
 
 
+JavaScript BigInt
+    JavaScript BigInt variables are used to store big integer values that are too big to be represented by 
+     a normal JavaScript Number.
+
+JavaScript Integer Accuracy
+    JavaScript integers are only accurate up to 15 digits:
+
+How to Create a BigInt
+    To create a BigInt, append n to the end of an integer or call BigInt():
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = 'demo'></h1>
+    <script>
+        let n1 = 99999999999999999999
+        let n2 = BigInt('99999999999999999999')
+        let n3 = 99999999999999999999n;
+        document.getElementById('demo').innerHTML = n1 + "<br>" + n2 + "<br>" + n3
+    </script>
+</body>
+</html> -->
+
+
+BigInt: A new JavaScript Datatype
+    The JavaScript typeof a BigInt is "bigint":
+    BigInt is the second numeric data type in JavaScript (after Number).
+
+    With BigInt the total number of supported data types in JavaScript is 8:
+    BigInt , Boolean , Null , Number , Object , String , Symbol and Undefined
+
+
+BigInt Operators
+    Operators that can be used on a JavaScript Number can also be used on a BigInt.
+    Arithmetic between a BigInt and a Number is not allowed (type conversion lose information).
+    Unsigned right shift (>>>) can not be done on a BigInt (it does not have a fixed width).
+
+BigInt Decimals
+    A BigInt can not have decimals.
+    BigInt Division Example
+        let x = 5n;
+        let y = x / 2; // Error: Cannot mix BigInt and other types, use explicit conversion.
+    let x = 5n;
+    let y = Number(x) / 2; // okay
+
+BigInt Hex, Octal and Binary
+    BigInt can also be written in hexadecimal, octal, or binary notation:
+
+    <!-- <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 id = 'demo'></h1>
+        <script>
+            let n1 = 0b011000000000000000000011111111111111000000111111n
+            let n2 = 0o1123343654765635254352552253n
+            let n3 = 0x9999999999999999898988989898989989999n;
+            document.getElementById('demo').innerHTML = n1 + "<br>" + n2 + "<br>" + n3
+        </script>
+    </body>
+    </html> -->
+
+Precision Curiosity
+    Rounding can compromise program security:
+
+    MAX_SAFE_INTEGER Example
+        9007199254740992 === 9007199254740993; // is true !!! yes it will be true
+
+Minimum and Maximum Safe Integers
+    ES6 added max and min properties to the Number object:       
+    MAX_SAFE_INTEGER , MIN_SAFE_INTEGER
+
+    MAX_SAFE_INTEGER Example
+        let x = Number.MAX_SAFE_INTEGER; //9007199254740991
+
+    MIN_SAFE_INTEGER Example
+        let x = Number.MIN_SAFE_INTEGER; //-9007199254740991
+
+
+
+New Number Methods
+    ES6 also added 2 new methods to the Number object:
+    Number.isInteger() , Number.isSafeInteger()
+
+    The Number.isInteger() Method
+        Example: isInteger()
+            Number.isInteger(10); //true
+            Number.isInteger(10.5); //false
+
+    The Number.isSafeInteger() Method
+        A safe integer is an integer that can be exactly represented as a double precision number.
+    Example isSafeInteger()
+        Number.isSafeInteger(10); //true
+        Number.isSafeInteger(12345678901234567890); //false
+
+    Safe integers are all integers from -(253 - 1) to +(253 - 1).
+    This is safe: 9007199254740991. This is not safe: 9007199254740992.
+
+
+...............................................Number methods.................................................
+
+
+
+JavaScript Number Methods
+    These number methods can be used on all JavaScript numbers:
+
+        toString()
+        	Returns a number as a string
+            All number methods can be used on any type of numbers (literals, variables, or expressions):
+                let x = 123;
+                x.toString(); //123
+                (123).toString(); //123
+                (100 + 23).toString(); //123
+
+
+        toExponential()
+        	Returns a number written in exponential notation
+            it returns a string, with a number rounded and written using exponential notation.
+            A parameter defines the number of characters behind the decimal point:
+            Example
+                let x = 9.656;  //9.656e+0
+                x.toExponential(2); //9.66e+0
+                x.toExponential(4); //9.6560e+0
+                x.toExponential(6); //9.656000e+0
+
+            The parameter is optional. If you don't specify it, JavaScript will not round the number.
+
+
+        toFixed()
+        	Returns a number written with a number of decimals
+            it returns a string, with the number written with a specified number of decimals:
+            Example
+                let x = 9.656; // 9.656
+                x.toFixed(0); // 10
+                x.toFixed(2); // 9.66
+                x.toFixed(4); // 9.6560
+                x.toFixed(6); // 9.656000
+
+            toFixed(2) is perfect for working with money.
+
+
+        toPrecision()	
+            Returns a number written with a specified length
+            The toPrecision() Method
+            toPrecision() returns a string, with a number written with a specified length:
+            Example
+                let x = 9.656; 
+                x.toPrecision(); //9.656
+                x.toPrecision(2); // 9.7
+                x.toPrecision(4); //9.656
+                x.toPrecision(6); //9.65600
+
+
+        ValueOf()	
+            Returns a number as a number
+            Example
+                let x = 123;
+                x.valueOf();  //123
+                (123).valueOf(); //123
+                (100 + 23).valueOf(); //123
+
+
+Converting Variables to Numbers
+    There are 3 JavaScript methods that can be used to convert a variable to a number:
+
+        Number()	
+            Returns a number converted from its argument.
+            The Number() method can be used to convert JavaScript variables to numbers:
+            Example
+                Number(true); //1
+                Number(false); //0
+                Number("10"); //10
+                Number("  10"); //10
+                Number("10  "); //10
+                Number(" 10  "); //10
+                Number("10.33"); //10.33
+                Number("10,33"); //NaN
+                Number("10 33"); //NaN
+                Number("John"); //NaN
+            If the number cannot be converted, NaN (Not a Number) is returned.
+
+            The Number() Method Used on Dates
+                Number() can also convert a date to a number.
+                Example
+                    Number(new Date("1970-01-01")) //0
+
+                The Number() method returns the number of milliseconds since 1.1.1970.
+                The number of milliseconds between 1970-01-02 and 1970-01-01 is 86400000:
+                Example
+                    let x = new Date("1970-01-02");
+                    Number(new Date("1970-01-02"))// 86400000
+
+                Example
+                    Number(new Date("2017-09-30"))
+                    Number(new Date("2017-09-30")) // 1506729600000
+
+
+        parseFloat()	
+            Parses its argument and returns a floating point number
+            it parses a string into a number. Spaces are allowed. Only the first number is returned:
+            Example
+                parseFloat("10");  //10
+                parseFloat("10.33"); //10.33
+                parseFloat("10 20 30"); //10
+                parseFloat("10 years"); //10
+                parseFloat("years 10"); //NaN
+            If the number cannot be converted, NaN (Not a Number) is returned.
+
+
+        parseInt()	
+            Parses its argument and returns a whole number
+            it parses a string into a whole number. Spaces are allowed. Only the first number is returned:
+            Example
+                parseInt("-10"); //-10
+                parseInt("-10.33");  //-10
+                parseInt("10"); //10
+                parseInt("10.33"); //10
+                parseInt("10 20 30"); //10
+                parseInt("10 years"); //10
+                parseInt("years 10"); //NaN
+            If the number cannot be converted, NaN (Not a Number) is returned.
+
+        The methods above are not number methods. They are global JavaScript methods.
+
+
+
+Number Object Methods
+    These object methods belong to the Number object:
+    
+        Number.isInteger()
+        	Returns true if the argument is an integer
+
+        Number.isSafeInteger()
+        	Returns true if the argument is a safe integer
+
+        Number.parseFloat()
+        	Converts a string to a number
+
+        Number.parseInt()
+        	Converts a string to a whole number
+
+
+Number Methods Cannot be Used on Variables
+    The number methods above belong to the JavaScript Number Object.
+    These methods can only be accessed like Number.isInteger().
+    Using X.isInteger() where X is a variable, will result in an error:
+    TypeError X.isInteger is not a function.
+
+
+
 
